@@ -1,144 +1,39 @@
-import styled from 'styled-components'
-import {
-    alignItems,
-    alignContent,
-    alignSelf,
-    border,
-    color,
-    compose,
-    display,
-    flex,
-    flexDirection,
-    flexWrap,
-    height,
-    justifyContent,
-    justifyItems,
-    justifySelf,
-    maxHeight,
-    maxWidth,
-    minHeight,
-    minWidth,
-    order,
-    position,
-    space,
-    textAlign,
-    typography,
-    variant,
-    width,
-} from 'styled-system'
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
 
-const baseStyles = [
-    alignSelf,
-    border,
-    color,
-    display,
-    flex,
-    height,
-    justifySelf,
-    maxHeight,
-    maxWidth,
-    minHeight,
-    minWidth,
-    order,
-    position,
-    space,
-    textAlign,
-    width,
-]
+export const Box = styled.div({
+    boxSizing: 'border-box',
+})
 
-const basePropTypes = {
-    ...alignSelf.propTypes,
-    ...border.propTypes,
-    ...color.propTypes,
-    ...display.propTypes,
-    ...flex.propTypes,
-    ...height.propTypes,
-    ...justifySelf.propTypes,
-    ...maxHeight.propTypes,
-    ...maxWidth.propTypes,
-    ...minHeight.propTypes,
-    ...minWidth.propTypes,
-    ...order.propTypes,
-    ...position.propTypes,
-    ...space.propTypes,
-    ...textAlign.propTypes,
-    ...width.propTypes,
-}
-
-const flexBoxStyles = [
-    alignContent,
-    alignItems,
-    flexDirection,
-    flexWrap,
-    justifyContent,
-    justifyItems,
-]
-
-const flexBoxPropTypes = {
-    ...alignContent.propTypes,
-    ...alignItems.propTypes,
-    ...flexDirection.propTypes,
-    ...flexWrap.propTypes,
-    ...justifyContent.propTypes,
-    ...justifyItems.propTypes,
-}
-
-const typographyStyles = [
-    typography,
-    variant({
-        key: 'typography',
-    }),
-]
-
-const typographyPropTypes = { ...typography.propTypes, ...variant.propTypes }
-
-export const Box = styled('div')(
-    {
-        boxSizing: 'border-box',
-    },
-    compose(...baseStyles)
-)
-
-Box.propTypes = {
-    ...basePropTypes,
-}
-
-export const Flex = styled('div')(
-    {
-        boxSizing: 'border-box',
-    },
-    compose(
-        ...baseStyles,
-        ...flexBoxStyles
-    )
-)
-
-Flex.propTypes = {
-    ...basePropTypes,
-    ...flexBoxPropTypes,
-}
-
-Flex.defaultProps = {
+export const Flex = styled.div({
+    boxSizing: 'border-box',
     display: 'flex',
-}
+})
 
-export const Typography = styled('div')(
-    {
-        boxSizing: 'border-box',
-    },
-    compose(
-        ...baseStyles,
-        ...typographyStyles
+const _typography = forwardRef(({ children, element, ...other }, ref) => {
+    const Component = element || 'p'
+    return (
+        <Component ref={ref} {...other}>
+            {children}
+        </Component>
     )
-)
+})
+
+export const Typography = styled(_typography)({
+    boxSizing: 'border-box',
+})
 
 Typography.propTypes = {
-    ...basePropTypes,
-    ...typographyPropTypes,
+    element: PropTypes.oneOf([
+        'div',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'p',
+        'span',
+    ]),
 }
-
-Typography.defaultProps = {
-    variant: 'default',
-}
-
-// TODO: export svg component

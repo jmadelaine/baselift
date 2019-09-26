@@ -1,7 +1,7 @@
 {
     "name": "baselift",
-    "version": "0.0.1",
-    "description": "React base components that implement styled-system",
+    "version": "0.0.2",
+    "description": "React base components that implement emotion",
     "main": "dist/index.js",
     "sideEffects": false,
     "scripts": {
@@ -9,30 +9,31 @@
         "clean": "rm -rf dist"
     },
     "keywords": [
+        "base",
         "components",
         "functional",
         "presentational",
         "react",
         "stateless",
-        "styled-system",
-        "styled-components",
         "ui"
     ],
     "author": "Jonathan Madelaine",
     "license": "MIT",
     "dependencies": {
-        "react": "^16.8.6",
-        "styled-system": "^5.0.15"
+        "@emotion/core": "^10.0.17",
+        "@emotion/styled": "^10.0.17",
+        "prop-types": "^15.7.2",
+        "react": "^16.9.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.5.5",
         "@babel/core": "^7.5.5",
         "@babel/preset-env": "^7.5.5",
-        "@babel/preset-react": "^7.0.0",
-        "styled-components": "^4.3.2"
+        "@babel/preset-react": "^7.0.0"
     },
     "peerDependencies": {
-        "styled-components": ">=4.0.0"
+        "@emotion/core": "^10.0.17",
+        "@emotion/styled": "^10.0.17"
     },
     "repository": {
         "type": "git",
