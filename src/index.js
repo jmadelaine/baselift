@@ -1,27 +1,49 @@
-import React, { forwardRef } from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
 
-export const Box = styled.div({
-    boxSizing: 'border-box',
-})
+export const Box = forwardRef(({ children, ...other }, ref) => (
+    <div
+        css={{
+            boxSizing: 'border-box',
+            position: 'relative',
+        }}
+        {...other}
+        ref={ref}
+    >
+        {children}
+    </div>
+))
 
-export const Flex = styled.div({
-    boxSizing: 'border-box',
-    display: 'flex',
-})
+export const Flex = forwardRef(({ children, ...other }, ref) => (
+    <div
+        css={{
+            boxSizing: 'border-box',
+            display: 'flex',
+            position: 'relative',
+        }}
+        {...other}
+        ref={ref}
+    >
+        {children}
+    </div>
+))
 
-const _typography = forwardRef(({ children, element, ...other }, ref) => {
-    const Component = element || 'p'
+export const Text = forwardRef(({ children, element, ...other }, ref) => {
+    const C = element || 'div'
     return (
-        <Component ref={ref} {...other}>
+        <C
+            css={{
+                boxSizing: 'border-box',
+                position: 'relative',
+            }}
+            ref={ref}
+            {...other}
+        >
             {children}
-        </Component>
+        </C>
     )
-})
-
-export const Typography = styled(_typography)({
-    boxSizing: 'border-box',
 })
 
 Typography.propTypes = {

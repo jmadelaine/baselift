@@ -1,7 +1,7 @@
 # Baselift
 
-React base components that implement [styled-system][].
+React base components that implement [emotion][].
 
 ---
 
-[styled-system]: https://styled-system.com/
+[emotion]: https://emotion.sh/

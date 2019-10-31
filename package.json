@@ -1,6 +1,6 @@
 {
     "name": "baselift",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "React base components that implement emotion",
     "main": "dist/index.js",
     "sideEffects": false,
@@ -21,7 +21,6 @@
     "license": "MIT",
     "dependencies": {
         "@emotion/core": "^10.0.17",
-        "@emotion/styled": "^10.0.17",
         "prop-types": "^15.7.2",
         "react": "^16.9.0"
     },
@@ -32,8 +31,7 @@
         "@babel/preset-react": "^7.0.0"
     },
     "peerDependencies": {
-        "@emotion/core": "^10.0.17",
-        "@emotion/styled": "^10.0.17"
+        "@emotion/core": "^10.0.17"
     },
     "repository": {
         "type": "git",
