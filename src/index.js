@@ -46,7 +46,7 @@ export const Text = forwardRef(({ children, element, ...other }, ref) => {
     )
 })
 
-Typography.propTypes = {
+Text.propTypes = {
     element: PropTypes.oneOf([
         'div',
         'h1',
