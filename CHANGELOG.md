@@ -1,5 +1,9 @@
 # Changelog
 
+[0.0.4] 2019-09-26
+
+-   Fix typo
+
 [0.0.3] 2019-09-26
 
 -   Replace @emotion/styled with emotion jsx pragma and css prop
