@@ -1,2 +1,4 @@
 babel.config.js
 src
+.prettierrc
+yarn.lock
