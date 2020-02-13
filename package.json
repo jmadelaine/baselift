@@ -1,12 +1,19 @@
 {
   "name": "baselift",
-  "version": "0.0.5",
-  "description": "React base components that implement emotion",
-  "main": "dist/index.js",
+  "version": "0.0.6",
+  "description": "React base components that implement Emotion",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "prepare": "yarn clean && babel src -d dist",
-    "clean": "rm -rf dist"
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn lint"
   },
   "keywords": [
     "base",
@@ -21,16 +28,15 @@
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.27",
+    "@types/react": "^16.9.19",
     "prop-types": "^15.7.2",
     "react": "^16.12.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "babel-loader": "^8.0.6",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.22"
