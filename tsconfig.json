@@ -2,13 +2,17 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "allowJs": true,
-    "jsx": "preserve",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "jsx": "react",
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
-    "lib": ["ES6"]
+    "lib": ["ES6"],
+    "moduleResolution": "node"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "exclude": ["node_modules"]
 }

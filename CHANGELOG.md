@@ -1,5 +1,14 @@
 # Changelog
 
+[0.0.7] 2020-02-13
+
+- Fix broken React compilation
+- Export IconProps and TextProps interfaces
+
+[0.0.6] 2020-02-13
+
+- Add TypeScript support
+
 [0.0.5] 2020-02-13
 
 - Move Box, Flex, and Text components into separate files
