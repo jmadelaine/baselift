@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { forwardRef, DetailedHTMLProps, HTMLAttributes } from 'react'
 
 export interface TextProps {
-  element: 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
+  element?: 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 }
 
 export const Text = forwardRef<

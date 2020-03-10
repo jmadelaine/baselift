@@ -1,5 +1,9 @@
 # Changelog
 
+[0.0.8] 2020-03-10
+
+- Make Text prop 'element' optional
+
 [0.0.7] 2020-02-13
 
 - Fix broken React compilation
