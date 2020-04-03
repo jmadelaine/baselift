@@ -31,7 +31,13 @@ export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGEl
         {paths.map((p, i) => (
           <path
             key={i}
-            fill={pathFills.length > i ? pathFills[i] : pathFills.length ? pathFills[pathFills.length - 1] : 'inherit'}
+            fill={
+              pathFills.length > i
+                ? pathFills[i]
+                : pathFills.length
+                ? pathFills[pathFills.length - 1]
+                : 'inherit'
+            }
             d={p}
           />
         ))}
