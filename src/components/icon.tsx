@@ -9,7 +9,7 @@ export interface IconProps {
 
 export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGElement>>(
   ({ path, pathFill, ...other }, ref) => {
-    const pathFills = typeof pathFill === 'object' ? pathFill : typeof pathFill === 'string' ? [pathColor] : []
+    const pathFills = typeof pathFill === 'object' ? pathFill : typeof pathFill === 'string' ? [pathFill] : []
     const paths = typeof path === 'object' ? path : typeof path === 'string' ? [path] : []
 
     return (
