@@ -10,9 +10,9 @@
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
-    "lib": ["ES6"],
+    "lib": ["es6", "dom"],
     "moduleResolution": "node"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/__tests__/*"]
 }
