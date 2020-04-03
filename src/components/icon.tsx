@@ -3,14 +3,16 @@ import { jsx } from '@emotion/core'
 import { forwardRef, SVGAttributes } from 'react'
 
 export interface IconProps {
-  path?: string | string[]
+  pathDef?: string | string[]
   pathFill?: string | string[]
 }
 
 export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGElement>>(
-  ({ path, pathFill, ...other }, ref) => {
-    const pathFills = typeof pathFill === 'object' ? pathFill : typeof pathFill === 'string' ? [pathFill] : []
-    const paths = typeof path === 'object' ? path : typeof path === 'string' ? [path] : []
+  ({ pathDef, pathFill, ...other }, ref) => {
+    const pathFills =
+      typeof pathFill === 'object' ? pathFill : typeof pathFill === 'string' ? [pathFill] : []
+    const pathDefs =
+      typeof pathDef === 'object' ? pathDef : typeof pathDef === 'string' ? [pathDef] : []
 
     return (
       <svg
@@ -28,7 +30,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGEl
         viewBox="0 0 24 24"
         {...other}
       >
-        {paths.map((p, i) => (
+        {pathDefs.map((p, i) => (
           <path
             key={i}
             fill={
