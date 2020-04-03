@@ -1,11 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { forwardRef, ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
+import { forwardRef, ButtonHTMLAttributes } from 'react'
 
-export const Button = forwardRef<
-  HTMLButtonElement,
-  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
->((props, ref) => (
+export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>((props, ref) => (
   <button
     ref={ref}
     css={{

@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { forwardRef, SVGProps } from 'react'
+import { forwardRef, SVGAttributes } from 'react'
 
 export interface IconProps {
   colors?: string[]
   paths?: string[]
 }
 
-export const Icon = forwardRef<SVGSVGElement, IconProps & SVGProps<SVGSVGElement>>(
+export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGElement>>(
   ({ colors = [], paths = [], ...other }, ref) => (
     <svg
       ref={ref}
@@ -33,4 +33,3 @@ export const Icon = forwardRef<SVGSVGElement, IconProps & SVGProps<SVGSVGElement
       ))}
     </svg>
   )
-)
