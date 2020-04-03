@@ -1,5 +1,11 @@
 # Changelog
 
+[0.0.9] 2020-04-04
+
+- Update dependencies
+- Allow string or string array for Icon component "path" and "pathFill" props
+- Add "blockquote" and "pre" as options for Text component "element" prop
+
 [0.0.8] 2020-03-10
 
 - Make Text prop 'element' optional
