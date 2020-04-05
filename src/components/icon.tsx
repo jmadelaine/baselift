@@ -5,26 +5,34 @@ import { forwardRef, SVGAttributes } from 'react'
 export interface IconProps {
   pathDef?: string | string[]
   pathFill?: string | string[]
+  pathStroke?: string | string[]
 }
 
 export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGElement>>(
-  ({ pathDef, pathFill, ...other }, ref) => {
-    const pathFills =
-      typeof pathFill === 'object' ? pathFill : typeof pathFill === 'string' ? [pathFill] : []
+  ({ pathDef, pathFill, pathStroke, ...other }, ref) => {
     const pathDefs =
       typeof pathDef === 'object' ? pathDef : typeof pathDef === 'string' ? [pathDef] : []
+    const pathFills =
+      typeof pathFill === 'object' ? pathFill : typeof pathFill === 'string' ? [pathFill] : []
+    const pathStrokes =
+      typeof pathStroke === 'object'
+        ? pathStroke
+        : typeof pathStroke === 'string'
+        ? [pathStroke]
+        : []
 
     return (
       <svg
         ref={ref}
         css={{
           color: 'inherit',
-          width: '24px',
-          height: '24px',
-          userSelect: 'none',
           display: 'inline-block',
           fill: pathFills.length ? 'none' : 'currentColor',
           flexShrink: 0,
+          height: '24px',
+          stroke: 'none',
+          userSelect: 'none',
+          width: '24px',
         }}
         focusable="false"
         viewBox="0 0 24 24"
@@ -38,6 +46,13 @@ export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGEl
                 ? pathFills[i]
                 : pathFills.length
                 ? pathFills[pathFills.length - 1]
+                : 'inherit'
+            }
+            stroke={
+              pathStrokes.length > i
+                ? pathStrokes[i]
+                : pathStrokes.length
+                ? pathStrokes[pathStrokes.length - 1]
                 : 'inherit'
             }
             d={p}

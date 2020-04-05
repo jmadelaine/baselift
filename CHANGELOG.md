@@ -1,5 +1,9 @@
 # Changelog
 
+[0.0.10] 2020-04-05
+
+- Add "pathStroke" prop to Icon component
+
 [0.0.9] 2020-04-04
 
 - Update dependencies

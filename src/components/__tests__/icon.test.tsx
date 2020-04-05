@@ -49,6 +49,7 @@ describe('Icon', () => {
     expect(res).toHaveStyleRule('user-select', 'none')
     expect(res).toHaveStyleRule('display', 'inline-block')
     expect(res).toHaveStyleRule('fill', 'currentColor')
+    expect(res).toHaveStyleRule('stroke', 'none')
     expect(res).toHaveStyleRule('flex-shrink', '0')
   })
   it('accepts css prop', () => {
@@ -135,7 +136,7 @@ describe('Icon', () => {
       fill: 'tomato',
     })
   })
-  it('sets remaining path fills to final pathFill value if pathDefs.length > pathFills.length', () => {
+  it('sets remaining path fills to final pathFill value if pathDef.length > pathFill.length', () => {
     const { children } = render(
       <Icon
         pathDef={['M0 0h24v24H0z', 'M0 0h16v16H0z', 'M0 0h8v8H0z']}
@@ -170,5 +171,65 @@ describe('Icon', () => {
 
     expect(res).not.toHaveStyleRule('fill', 'currentColor')
     expect(res).toHaveStyleRule('fill', 'none')
+  })
+
+  it('accepts string as pathStroke prop', () => {
+    const { children } = render(<Icon pathDef="M0 0h24v24H0z" pathStroke="hotpink" />)
+
+    const c = children as ReactTestRendererJSON[]
+
+    expect(c).toHaveLength(1)
+    expect(c[0].props).toMatchObject({
+      stroke: 'hotpink',
+    })
+  })
+  it('accepts string array as pathStroke prop', () => {
+    const { children } = render(
+      <Icon pathDef={['M0 0h24v24H0z', 'M0 0h16v16H0z']} pathStroke={['hotpink', 'tomato']} />
+    )
+
+    const c = children as ReactTestRendererJSON[]
+
+    expect(c).toHaveLength(2)
+
+    expect(c[0].type).toBe('path')
+    expect(c[0].props).toMatchObject({
+      stroke: 'hotpink',
+    })
+
+    expect(c[1].type).toBe('path')
+    expect(c[1].props).toMatchObject({
+      stroke: 'tomato',
+    })
+  })
+  it('sets remaining path strokes to final pathStroke value if pathDef.length > pathStroke.length', () => {
+    const { children } = render(
+      <Icon
+        pathDef={['M0 0h24v24H0z', 'M0 0h16v16H0z', 'M0 0h8v8H0z']}
+        pathStroke={['hotpink', 'tomato']}
+      />
+    )
+
+    const c = children as ReactTestRendererJSON[]
+
+    expect(c).toHaveLength(3)
+
+    expect(c[0].type).toBe('path')
+    expect(c[0].props).toMatchObject({
+      d: 'M0 0h24v24H0z',
+      stroke: 'hotpink',
+    })
+
+    expect(c[1].type).toBe('path')
+    expect(c[1].props).toMatchObject({
+      d: 'M0 0h16v16H0z',
+      stroke: 'tomato',
+    })
+
+    expect(c[2].type).toBe('path')
+    expect(c[2].props).toMatchObject({
+      d: 'M0 0h8v8H0z',
+      stroke: 'tomato',
+    })
   })
 })
