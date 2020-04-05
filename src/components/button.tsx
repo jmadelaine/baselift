@@ -12,7 +12,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
         border: 0,
         boxSizing: 'border-box',
         cursor: 'pointer',
-        display: 'flex',
+        display: 'inline-block',
         outline: 0,
         position: 'relative',
         textOverflow: 'ellipsis',

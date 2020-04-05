@@ -57,7 +57,7 @@ describe('Button', () => {
     expect(res).toHaveStyleRule('border', '0')
     expect(res).toHaveStyleRule('box-sizing', 'border-box')
     expect(res).toHaveStyleRule('cursor', 'pointer')
-    expect(res).toHaveStyleRule('display', 'flex')
+    expect(res).toHaveStyleRule('display', 'inline-block')
     expect(res).toHaveStyleRule('outline', '0')
     expect(res).toHaveStyleRule('position', 'relative')
     expect(res).toHaveStyleRule('text-overflow', 'ellipsis')
