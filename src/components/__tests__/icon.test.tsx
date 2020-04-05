@@ -15,6 +15,18 @@ describe('Icon', () => {
 
     expect(type).toBe('svg')
   })
+  it('renders children', () => {
+    const { children } = render(
+      <Icon>
+        <div />
+      </Icon>
+    )
+
+    const c = children as ReactTestRendererJSON[]
+
+    expect(c).toHaveLength(1)
+    expect(c[0].type).toBe('div')
+  })
   it('has default props', () => {
     const { props } = render(<Icon />)
 

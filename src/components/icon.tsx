@@ -9,7 +9,7 @@ export interface IconProps {
 }
 
 export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGElement>>(
-  ({ pathDef, pathFill, pathStroke, ...other }, ref) => {
+  ({ pathDef, pathFill, pathStroke, children, ...other }, ref) => {
     const pathDefs =
       typeof pathDef === 'object' ? pathDef : typeof pathDef === 'string' ? [pathDef] : []
     const pathFills =
@@ -58,6 +58,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGEl
             d={p}
           />
         ))}
+        {children}
       </svg>
     )
   }
