@@ -1,5 +1,10 @@
 # Changelog
 
+[0.0.11] 2020-04-05
+
+- Render children in Icon component
+- Change Button component's display style to inline-block
+
 [0.0.10] 2020-04-05
 
 - Add "pathStroke" prop to Icon component
