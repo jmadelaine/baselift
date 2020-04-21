@@ -1,5 +1,9 @@
 # Changelog
 
+[0.1.1] 2020-04-21
+
+- Export Label and TextField components and props interfaces
+
 [0.1.0] 2020-04-21
 
 - Restrict Button 'type' prop to valid button input types
