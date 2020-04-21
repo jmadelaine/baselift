@@ -1,5 +1,12 @@
 # Changelog
 
+[0.1.0] 2020-04-21
+
+- Restrict Button 'type' prop to valid button input types
+- Minor changes to Button component base style
+- Add TextField component
+- Add Label component
+
 [0.0.11] 2020-04-05
 
 - Render children in Icon component
