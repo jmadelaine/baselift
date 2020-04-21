@@ -4,14 +4,11 @@ import { forwardRef, InputHTMLAttributes } from 'react'
 
 const validTextFieldTypes = ['email', 'hidden', 'password', 'tel', 'text', 'url'] as const
 
-interface TextFieldProps {
+export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   type?: typeof validTextFieldTypes[number]
 }
 
-export const TextField = forwardRef<
-  HTMLInputElement,
-  TextFieldProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>
->(({ type, ...rest }, ref) => (
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ type, ...rest }, ref) => (
   <input
     ref={ref}
     css={{

@@ -4,14 +4,11 @@ import { forwardRef, ButtonHTMLAttributes } from 'react'
 
 const validButtonTypes = ['button', 'reset', 'submit'] as const
 
-interface ButtonProps {
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: typeof validButtonTypes[number]
 }
 
-export const Button = forwardRef<
-  HTMLButtonElement,
-  ButtonProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>
->(({ type, ...rest }, ref) => (
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ type, ...rest }, ref) => (
   <button
     ref={ref}
     css={{

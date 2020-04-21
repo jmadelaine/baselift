@@ -2,13 +2,13 @@
 import { jsx } from '@emotion/core'
 import { forwardRef, SVGAttributes } from 'react'
 
-export interface IconProps {
+export interface IconProps extends SVGAttributes<SVGSVGElement> {
   pathDef?: string | string[]
   pathFill?: string | string[]
   pathStroke?: string | string[]
 }
 
-export const Icon = forwardRef<SVGSVGElement, IconProps & SVGAttributes<SVGSVGElement>>(
+export const Icon = forwardRef<SVGSVGElement, IconProps>(
   ({ pathDef, pathFill, pathStroke, children, ...other }, ref) => {
     const pathDefs =
       typeof pathDef === 'object' ? pathDef : typeof pathDef === 'string' ? [pathDef] : []
