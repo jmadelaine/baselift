@@ -13,6 +13,9 @@ This package includes the following components:
 - Flex
 - Icon
 - Text
+- Label
+- TextField
+- Stack
 
 ---
 

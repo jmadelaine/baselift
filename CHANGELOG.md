@@ -1,5 +1,9 @@
 # Changelog
 
+[0.2.0] 2020-04-26
+
+- Add Stack component
+
 [0.1.1] 2020-04-21
 
 - Export Label and TextField components and props interfaces
