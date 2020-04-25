@@ -34,10 +34,11 @@ export interface StackProps extends HTMLAttributes<HTMLDivElement> {
   space?: LiteralUnion<Extract<keyof typeof spaceOptions, string>> | number
   hAlign?: Extract<keyof typeof hAlignOptions, string>
   vAlign?: Extract<keyof typeof vAlignOptions, string>
+  stretch?: boolean
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
-  ({ direction, space, hAlign, vAlign, children, ...other }, ref) => {
+  ({ direction, space, hAlign, vAlign, stretch, children, ...other }, ref) => {
     const h = hAlign && hAlignOptions[hAlign]
     const v = vAlign && vAlignOptions[vAlign]
     const s =
@@ -55,7 +56,8 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
         css={{
           flexDirection,
           justifyContent: s ? s : (flexDirection === 'column' ? v : h) || 'flex-start',
-          alignItems: (flexDirection === 'column' ? h : v) || 'flex-start',
+          alignItems:
+            (stretch && 'stretch') || (flexDirection === 'column' ? h : v) || 'flex-start',
         }}
         {...other}
       >

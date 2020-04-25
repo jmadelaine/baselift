@@ -176,4 +176,9 @@ describe('Stack', () => {
     expect(res).toHaveStyleRule('justify-content', 'center')
     expect(res).toHaveStyleRule('align-items', 'flex-end')
   })
+  it('accepts stretch prop', () => {
+    const res = render(<Stack stretch={true} />)
+
+    expect(res).toHaveStyleRule('align-items', 'stretch')
+  })
 })

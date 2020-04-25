@@ -1,5 +1,9 @@
 # Changelog
 
+[0.3.0] 2020-04-26
+
+- Add stretch prop to Stack component
+
 [0.2.0] 2020-04-26
 
 - Add Stack component
