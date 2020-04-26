@@ -66,7 +66,17 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
               if (i < 1) {
                 return [c]
               } else {
-                return [...res, <div key={`space-${i}`} css={{ flex: `0 0 ${customS}` }} />, c]
+                return [
+                  ...res,
+                  <div
+                    key={`space-${i}`}
+                    css={{
+                      flex: `0 0 ${customS}`,
+                      [flexDirection === 'column' ? 'height' : 'width']: customS,
+                    }}
+                  />,
+                  c,
+                ]
               }
             }, [])
           : children}

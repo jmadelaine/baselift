@@ -153,22 +153,52 @@ describe('Stack', () => {
     expect(px).toHaveLength(3)
     expect(px[1].type).toBe('div')
     expect(px[1]).toHaveStyleRule('flex', '0 0 5px')
+    expect(px[1]).toHaveStyleRule('width', '5px')
 
     expect(em).toHaveLength(3)
     expect(em[1].type).toBe('div')
     expect(em[1]).toHaveStyleRule('flex', '0 0 5em')
+    expect(em[1]).toHaveStyleRule('width', '5em')
 
     expect(rem).toHaveLength(3)
     expect(rem[1].type).toBe('div')
     expect(rem[1]).toHaveStyleRule('flex', '0 0 5rem')
+    expect(rem[1]).toHaveStyleRule('width', '5rem')
 
     expect(str).toHaveLength(3)
     expect(str[1].type).toBe('div')
     expect(str[1]).toHaveStyleRule('flex', '0 0 5px')
+    expect(str[1]).toHaveStyleRule('width', '5px')
 
     expect(num).toHaveLength(3)
     expect(num[1].type).toBe('div')
     expect(num[1]).toHaveStyleRule('flex', '0 0 5px')
+    expect(num[1]).toHaveStyleRule('width', '5px')
+  })
+  it('sets height or width with space prop depending on direction prop', () => {
+    const row = render(
+      <Stack direction="row" space={5}>
+        <div />
+        <div />
+      </Stack>
+    ).children as ReactTestRendererJSON[]
+
+    const column = render(
+      <Stack direction="column" space={5}>
+        <div />
+        <div />
+      </Stack>
+    ).children as ReactTestRendererJSON[]
+
+    expect(row).toHaveLength(3)
+    expect(row[1].type).toBe('div')
+    expect(row[1]).toHaveStyleRule('flex', '0 0 5px')
+    expect(row[1]).toHaveStyleRule('width', '5px')
+
+    expect(column).toHaveLength(3)
+    expect(column[1].type).toBe('div')
+    expect(column[1]).toHaveStyleRule('flex', '0 0 5px')
+    expect(column[1]).toHaveStyleRule('height', '5px')
   })
   it('does not override hAlign or vAlign when custom space prop is passed', () => {
     const res = render(<Stack direction="row" hAlign="center" vAlign="bottom" space="5px" />)

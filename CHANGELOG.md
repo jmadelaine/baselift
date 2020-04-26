@@ -1,5 +1,9 @@
 # Changelog
 
+[0.3.1] 2020-04-26
+
+- Set width or height on Stack spacing component as well as flex-basis
+
 [0.3.0] 2020-04-26
 
 - Add stretch prop to Stack component
