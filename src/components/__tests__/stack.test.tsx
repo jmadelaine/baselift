@@ -67,6 +67,31 @@ describe('Stack', () => {
     expect(res).not.toHaveStyleRule('position', 'relative')
     expect(res).toHaveStyleRule('position', 'absolute')
   })
+  it('accepts direction prop', () => {
+    const row = render(<Stack direction="row" />)
+    const column = render(<Stack direction="column" />)
+
+    expect(row).toHaveStyleRule('flex-direction', 'row')
+    expect(column).toHaveStyleRule('flex-direction', 'column')
+  })
+  it('accepts alignMain prop', () => {
+    const start = render(<Stack alignMain="start" />)
+    const center = render(<Stack alignMain="center" />)
+    const end = render(<Stack alignMain="end" />)
+
+    expect(start).toHaveStyleRule('justify-content', 'flex-start')
+    expect(center).toHaveStyleRule('justify-content', 'center')
+    expect(end).toHaveStyleRule('justify-content', 'flex-end')
+  })
+  it('accepts alignCross prop', () => {
+    const start = render(<Stack alignCross="start" />)
+    const center = render(<Stack alignCross="center" />)
+    const end = render(<Stack alignCross="end" />)
+
+    expect(start).toHaveStyleRule('align-items', 'flex-start')
+    expect(center).toHaveStyleRule('align-items', 'center')
+    expect(end).toHaveStyleRule('align-items', 'flex-end')
+  })
   it('accepts space prop', () => {
     const between = render(<Stack space="between" />)
     const around = render(<Stack space="around" />)
@@ -76,64 +101,24 @@ describe('Stack', () => {
     expect(around).toHaveStyleRule('justify-content', 'space-around')
     expect(evenly).toHaveStyleRule('justify-content', 'space-evenly')
   })
-  it('accepts direction prop', () => {
-    const row = render(<Stack direction="row" />)
-    const column = render(<Stack direction="column" />)
+  it('overrides alignMain prop with space prop', () => {
+    const center = render(<Stack alignMain="center" />)
+    const between = render(<Stack alignMain="center" space="between" />)
 
-    expect(row).toHaveStyleRule('flex-direction', 'row')
-    expect(column).toHaveStyleRule('flex-direction', 'column')
+    expect(center).toHaveStyleRule('justify-content', 'center')
+    expect(between).toHaveStyleRule('justify-content', 'space-between')
   })
-  it('accepts hAlign prop style based on direction', () => {
-    const rowLeft = render(<Stack direction="row" hAlign="left" />)
-    const columnLeft = render(<Stack direction="column" hAlign="left" />)
-    const rowCenter = render(<Stack direction="row" hAlign="center" />)
-    const columnCenter = render(<Stack direction="column" hAlign="center" />)
-    const rowRight = render(<Stack direction="row" hAlign="right" />)
-    const columnRight = render(<Stack direction="column" hAlign="right" />)
+  it('accepts stretch prop', () => {
+    const res = render(<Stack stretch={true} />)
 
-    expect(rowLeft).toHaveStyleRule('justify-content', 'flex-start')
-    expect(rowLeft).toHaveStyleRule('align-items', 'flex-start')
-    expect(columnLeft).toHaveStyleRule('justify-content', 'flex-start')
-    expect(columnLeft).toHaveStyleRule('align-items', 'flex-start')
-    expect(rowCenter).toHaveStyleRule('justify-content', 'center')
-    expect(rowCenter).toHaveStyleRule('align-items', 'flex-start')
-    expect(columnCenter).toHaveStyleRule('justify-content', 'flex-start')
-    expect(columnCenter).toHaveStyleRule('align-items', 'center')
-    expect(rowRight).toHaveStyleRule('justify-content', 'flex-end')
-    expect(rowRight).toHaveStyleRule('align-items', 'flex-start')
-    expect(columnRight).toHaveStyleRule('justify-content', 'flex-start')
-    expect(columnRight).toHaveStyleRule('align-items', 'flex-end')
+    expect(res).toHaveStyleRule('align-items', 'stretch')
   })
-  it('accepts vAlign prop style based on direction', () => {
-    const rowTop = render(<Stack direction="row" vAlign="top" />)
-    const columnTop = render(<Stack direction="column" vAlign="top" />)
-    const rowCenter = render(<Stack direction="row" vAlign="center" />)
-    const columnCenter = render(<Stack direction="column" vAlign="center" />)
-    const rowBottom = render(<Stack direction="row" vAlign="bottom" />)
-    const columnBottom = render(<Stack direction="column" vAlign="bottom" />)
+  it('overrides alignCross prop with stretch prop', () => {
+    const center = render(<Stack alignCross="center" />)
+    const stretch = render(<Stack alignCross="center" stretch={true} />)
 
-    expect(rowTop).toHaveStyleRule('justify-content', 'flex-start')
-    expect(rowTop).toHaveStyleRule('align-items', 'flex-start')
-    expect(columnTop).toHaveStyleRule('justify-content', 'flex-start')
-    expect(columnTop).toHaveStyleRule('align-items', 'flex-start')
-    expect(rowCenter).toHaveStyleRule('justify-content', 'flex-start')
-    expect(rowCenter).toHaveStyleRule('align-items', 'center')
-    expect(columnCenter).toHaveStyleRule('justify-content', 'center')
-    expect(columnCenter).toHaveStyleRule('align-items', 'flex-start')
-    expect(rowBottom).toHaveStyleRule('justify-content', 'flex-start')
-    expect(rowBottom).toHaveStyleRule('align-items', 'flex-end')
-    expect(columnBottom).toHaveStyleRule('justify-content', 'flex-end')
-    expect(columnBottom).toHaveStyleRule('align-items', 'flex-start')
-  })
-  it('overrides vAlign prop with space prop', () => {
-    const res = render(<Stack direction="column" vAlign="center" space="between" />)
-
-    expect(res).toHaveStyleRule('justify-content', 'space-between')
-  })
-  it('overrides hAlign prop with space prop', () => {
-    const res = render(<Stack direction="row" hAlign="center" space="between" />)
-
-    expect(res).toHaveStyleRule('justify-content', 'space-between')
+    expect(center).toHaveStyleRule('align-items', 'center')
+    expect(stretch).toHaveStyleRule('align-items', 'stretch')
   })
   it('accepts custom space prop', () => {
     const renderWithChildrenAndSpace = (space: string | number) =>
@@ -153,62 +138,63 @@ describe('Stack', () => {
     expect(px).toHaveLength(3)
     expect(px[1].type).toBe('div')
     expect(px[1]).toHaveStyleRule('flex', '0 0 5px')
-    expect(px[1]).toHaveStyleRule('width', '5px')
+    expect(px[1]).toHaveStyleRule('block-size', '5px')
 
     expect(em).toHaveLength(3)
     expect(em[1].type).toBe('div')
     expect(em[1]).toHaveStyleRule('flex', '0 0 5em')
-    expect(em[1]).toHaveStyleRule('width', '5em')
+    expect(em[1]).toHaveStyleRule('block-size', '5em')
 
     expect(rem).toHaveLength(3)
     expect(rem[1].type).toBe('div')
     expect(rem[1]).toHaveStyleRule('flex', '0 0 5rem')
-    expect(rem[1]).toHaveStyleRule('width', '5rem')
+    expect(rem[1]).toHaveStyleRule('block-size', '5rem')
 
     expect(str).toHaveLength(3)
     expect(str[1].type).toBe('div')
     expect(str[1]).toHaveStyleRule('flex', '0 0 5px')
-    expect(str[1]).toHaveStyleRule('width', '5px')
+    expect(str[1]).toHaveStyleRule('block-size', '5px')
 
     expect(num).toHaveLength(3)
     expect(num[1].type).toBe('div')
     expect(num[1]).toHaveStyleRule('flex', '0 0 5px')
-    expect(num[1]).toHaveStyleRule('width', '5px')
+    expect(num[1]).toHaveStyleRule('block-size', '5px')
   })
-  it('sets height or width with space prop depending on direction prop', () => {
-    const row = render(
-      <Stack direction="row" space={5}>
-        <div />
-        <div />
-      </Stack>
-    ).children as ReactTestRendererJSON[]
+  it('ignores 0 value or invalid custom space prop', () => {
+    const renderWithChildrenAndSpace = (space: string | number) =>
+      render(
+        <Stack space={space}>
+          <div />
+          <div />
+        </Stack>
+      )
 
-    const column = render(
-      <Stack direction="column" space={5}>
-        <div />
-        <div />
-      </Stack>
-    ).children as ReactTestRendererJSON[]
+    // Zero value
+    const px = renderWithChildrenAndSpace('0px').children as ReactTestRendererJSON[]
+    const em = renderWithChildrenAndSpace('0em').children as ReactTestRendererJSON[]
+    const rem = renderWithChildrenAndSpace('0rem').children as ReactTestRendererJSON[]
+    const str = renderWithChildrenAndSpace('0').children as ReactTestRendererJSON[]
+    const num = renderWithChildrenAndSpace(0).children as ReactTestRendererJSON[]
 
-    expect(row).toHaveLength(3)
-    expect(row[1].type).toBe('div')
-    expect(row[1]).toHaveStyleRule('flex', '0 0 5px')
-    expect(row[1]).toHaveStyleRule('width', '5px')
+    // Invalid
+    const alphas = renderWithChildrenAndSpace('abc').children as ReactTestRendererJSON[]
+    const empty = renderWithChildrenAndSpace('').children as ReactTestRendererJSON[]
+    const nan = renderWithChildrenAndSpace(NaN).children as ReactTestRendererJSON[]
 
-    expect(column).toHaveLength(3)
-    expect(column[1].type).toBe('div')
-    expect(column[1]).toHaveStyleRule('flex', '0 0 5px')
-    expect(column[1]).toHaveStyleRule('height', '5px')
+    expect(px).toHaveLength(2)
+    expect(em).toHaveLength(2)
+    expect(rem).toHaveLength(2)
+    expect(str).toHaveLength(2)
+    expect(num).toHaveLength(2)
+    expect(alphas).toHaveLength(2)
+    expect(empty).toHaveLength(2)
+    expect(nan).toHaveLength(2)
   })
-  it('does not override hAlign or vAlign when custom space prop is passed', () => {
-    const res = render(<Stack direction="row" hAlign="center" vAlign="bottom" space="5px" />)
+  it('does not override alignMain with custom space prop', () => {
+    const center = render(<Stack alignMain="center" />)
+    const space = render(<Stack alignMain="center" space="5px" />)
 
-    expect(res).toHaveStyleRule('justify-content', 'center')
-    expect(res).toHaveStyleRule('align-items', 'flex-end')
-  })
-  it('accepts stretch prop', () => {
-    const res = render(<Stack stretch={true} />)
-
-    expect(res).toHaveStyleRule('align-items', 'stretch')
+    expect(center).toHaveStyleRule('justify-content', 'center')
+    expect(space).toHaveStyleRule('justify-content', 'center')
   })
 })

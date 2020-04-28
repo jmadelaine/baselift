@@ -1,5 +1,9 @@
 # Changelog
 
+[0.4.0] 2020-04-28
+
+- Stack component has logical properties
+
 [0.3.1] 2020-04-26
 
 - Set width or height on Stack spacing component as well as flex-basis
