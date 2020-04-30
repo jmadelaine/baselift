@@ -14,6 +14,7 @@ This package includes the following components:
 - Icon
 - Text
 - Label
+- TextArea
 - TextField
 - Stack
 

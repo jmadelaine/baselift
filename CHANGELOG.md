@@ -1,5 +1,9 @@
 # Changelog
 
+[0.5.0] 2020-04-30
+
+- Add TextArea component
+
 [0.4.0] 2020-04-28
 
 - Stack component has logical properties

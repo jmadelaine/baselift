@@ -3,44 +3,27 @@ import { jsx } from '@emotion/core'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'
-import { TextField } from '../text-field'
+import { TextArea } from '../text-area'
 
 expect.extend(matchers)
 
 const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
 
-describe('Text Field', () => {
+describe('Text Area', () => {
   it('renders', () => {
-    const { type } = render(<TextField />)
+    const { type } = render(<TextArea />)
 
-    expect(type).toBe('input')
-  })
-  it('has default props', () => {
-    const { props } = render(<TextField />)
-
-    expect(props).toMatchObject({
-      type: 'text',
-    })
+    expect(type).toBe('textarea')
   })
   it('accepts basic html props', () => {
-    const { props } = render(<TextField id="someId" />)
+    const { props } = render(<TextArea id="someId" />)
 
     expect(props).toMatchObject({
       id: 'someId',
     })
   })
-  it('allows default props to be overwritten', () => {
-    const { props } = render(<TextField type="password" />)
-
-    expect(props).not.toMatchObject({
-      type: 'text',
-    })
-    expect(props).toMatchObject({
-      type: 'password',
-    })
-  })
   it('has default style', () => {
-    const res = render(<TextField />)
+    const res = render(<TextArea />)
 
     expect(res).toHaveStyleRule('appearance', 'none')
     expect(res).toHaveStyleRule('background', '0')
@@ -63,7 +46,7 @@ describe('Text Field', () => {
   })
   it('accepts css prop', () => {
     const res = render(
-      <TextField
+      <TextArea
         css={{
           color: 'hotpink',
         }}
@@ -74,7 +57,7 @@ describe('Text Field', () => {
   })
   it('allows default style to be overwritten', () => {
     const res = render(
-      <TextField
+      <TextArea
         css={{
           position: 'absolute',
         }}
@@ -85,7 +68,7 @@ describe('Text Field', () => {
     expect(res).toHaveStyleRule('position', 'absolute')
   })
   it('renders value', () => {
-    const { props } = render(<TextField value="some text" />)
+    const { props } = render(<TextArea value="some text" />)
 
     expect(props).toMatchObject({
       value: 'some text',
