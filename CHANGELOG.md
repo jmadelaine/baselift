@@ -3,6 +3,7 @@
 [0.5.1] 2020-07-19
 
 - Update dev dependencies
+- Validate Text component's element prop
 
 [0.5.0] 2020-04-30
 
