@@ -1,5 +1,9 @@
 # Changelog
 
+[0.5.1] 2020-07-19
+
+- Update dev dependencies
+
 [0.5.0] 2020-04-30
 
 - Add TextArea component

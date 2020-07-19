@@ -1,6 +1,6 @@
 {
   "name": "baselift",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "React base components that implement Emotion",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -30,22 +30,22 @@
   "dependencies": {},
   "devDependencies": {
     "@emotion/core": "^10.0.28",
-    "@testing-library/react": "^10.0.3",
-    "@types/jest": "^25.2.1",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
+    "@testing-library/react": "^10.4.7",
+    "@types/jest": "^26.0.5",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
     "@types/react-test-renderer": "^16.9.2",
-    "codecov": "^3.6.5",
-    "jest": "^25.4.0",
+    "codecov": "^3.7.1",
+    "jest": "^26.1.0",
     "jest-emotion": "^10.0.32",
-    "prettier": "^2.0.4",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
-    "ts-jest": "^25.4.0",
-    "tslint": "^6.1.1",
+    "ts-jest": "^26.1.3",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.28"
