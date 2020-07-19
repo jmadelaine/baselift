@@ -5,7 +5,7 @@ import { forwardRef, TextareaHTMLAttributes } from 'react'
 export const TextArea = forwardRef<
   HTMLTextAreaElement,
   TextareaHTMLAttributes<HTMLTextAreaElement>
->(({ ...rest }, ref) => (
+>((props, ref) => (
   <textarea
     ref={ref}
     css={{
@@ -34,6 +34,6 @@ export const TextArea = forwardRef<
         zIndex: 1,
       },
     }}
-    {...rest}
+    {...props}
   />
 ))

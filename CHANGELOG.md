@@ -4,6 +4,7 @@
 
 - Update dev dependencies
 - Validate Text component's element prop
+- Use consistent naming when spreading props
 
 [0.5.0] 2020-04-30
 

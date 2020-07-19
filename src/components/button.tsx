@@ -8,7 +8,7 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   type?: typeof validButtonTypes[number]
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ type, ...rest }, ref) => (
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ type, ...other }, ref) => (
   <button
     ref={ref}
     css={{
@@ -39,6 +39,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ type, ...res
       },
     }}
     type={type && validButtonTypes.indexOf(type) > -1 ? type : 'button'}
-    {...rest}
+    {...other}
   />
 ))

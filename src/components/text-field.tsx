@@ -8,7 +8,7 @@ export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElemen
   type?: typeof validTextFieldTypes[number]
 }
 
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ type, ...rest }, ref) => (
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ type, ...other }, ref) => (
   <input
     ref={ref}
     css={{
@@ -38,6 +38,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({ type, .
       },
     }}
     type={type && validTextFieldTypes.indexOf(type) > -1 ? type : 'text'}
-    {...rest}
+    {...other}
   />
 ))
