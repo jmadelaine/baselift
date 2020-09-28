@@ -11,9 +11,8 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.tsx\"",
-    "lint": "tslint -p tsconfig.json",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn format && yarn lint && yarn test",
+    "prepublishOnly": "yarn format && yarn test",
     "test": "jest --config jestconfig.json"
   },
   "keywords": [
