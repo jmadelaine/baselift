@@ -1,5 +1,10 @@
 # Changelog
 
+[0.5.2] 2020-09-28
+
+- Add default exports to component files
+- Restructure component directory
+
 [0.5.1] 2020-07-19
 
 - Update dev dependencies
