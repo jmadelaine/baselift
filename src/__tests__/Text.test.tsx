@@ -7,7 +7,7 @@ import { Text } from '../Text'
 
 expect.extend(matchers)
 
-const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
+const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
 describe('Text', () => {
   it('renders', () => {

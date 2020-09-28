@@ -7,7 +7,7 @@ import { Icon } from '../Icon'
 
 expect.extend(matchers)
 
-const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
+const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
 describe('Icon', () => {
   it('renders', () => {

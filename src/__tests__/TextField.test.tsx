@@ -7,7 +7,7 @@ import { TextField } from '../TextField'
 
 expect.extend(matchers)
 
-const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
+const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
 describe('Text Field', () => {
   it('renders', () => {

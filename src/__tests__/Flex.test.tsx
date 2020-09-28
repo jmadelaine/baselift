@@ -7,7 +7,7 @@ import { Flex } from '../Flex'
 
 expect.extend(matchers)
 
-const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
+const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
 describe('Flex', () => {
   it('renders', () => {

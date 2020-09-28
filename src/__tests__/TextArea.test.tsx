@@ -7,7 +7,7 @@ import { TextArea } from '../TextArea'
 
 expect.extend(matchers)
 
-const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
+const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
 describe('Text Area', () => {
   it('renders', () => {
