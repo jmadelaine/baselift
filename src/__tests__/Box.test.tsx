@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'
-import { Box } from '../box'
+import { Box } from '../Box'
 
 expect.extend(matchers)
 

@@ -3,47 +3,42 @@ import { jsx } from '@emotion/core'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'
-import { Flex } from '../flex'
+import { Text } from '../Text'
 
 expect.extend(matchers)
 
 const render = (el: ReactElement) => create(el).toJSON() || ({} as ReactTestRendererJSON)
 
-describe('Flex', () => {
+describe('Text', () => {
   it('renders', () => {
-    const { type } = render(<Flex />)
+    const { type } = render(<Text />)
 
     expect(type).toBe('div')
   })
   it('renders children', () => {
-    const { children } = render(
-      <Flex>
-        <div />
-      </Flex>
-    )
+    const { children } = render(<Text>Some text</Text>)
 
-    const c = children as ReactTestRendererJSON[]
+    const c = children as string[]
 
     expect(c).toHaveLength(1)
-    expect(c[0].type).toBe('div')
+    expect(c[0]).toBe('Some text')
   })
   it('accepts basic html props', () => {
-    const { props } = render(<Flex id="someId" />)
+    const { props } = render(<Text id="someId" />)
 
     expect(props).toMatchObject({
       id: 'someId',
     })
   })
   it('has default style', () => {
-    const res = render(<Flex />)
+    const res = render(<Text />)
 
     expect(res).toHaveStyleRule('box-sizing', 'border-box')
     expect(res).toHaveStyleRule('position', 'relative')
-    expect(res).toHaveStyleRule('display', 'flex')
   })
   it('accepts css prop', () => {
     const res = render(
-      <Flex
+      <Text
         css={{
           color: 'hotpink',
         }}
@@ -54,7 +49,7 @@ describe('Flex', () => {
   })
   it('allows default style to be overwritten', () => {
     const res = render(
-      <Flex
+      <Text
         css={{
           position: 'absolute',
         }}
@@ -63,5 +58,10 @@ describe('Flex', () => {
 
     expect(res).not.toHaveStyleRule('position', 'relative')
     expect(res).toHaveStyleRule('position', 'absolute')
+  })
+  it('accepts element prop', () => {
+    const { type } = render(<Text element="p" />)
+
+    expect(type).toBe('p')
   })
 })

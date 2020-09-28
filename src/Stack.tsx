@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { forwardRef, ReactNode, Children, HTMLAttributes } from 'react'
-import { Flex } from './flex'
+import { Flex } from './Flex'
 
 const parseCssSizeString = (inp: string) => {
   const n = parseFloat(inp)

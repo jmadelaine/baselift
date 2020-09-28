@@ -56,7 +56,7 @@
     "env": {
       "compiler": "bit.envs/compilers/react-typescript@3.1.57"
     },
-    "componentsDefaultDirectory": "src/components/{name}",
+    "componentsDefaultDirectory": "src/{name}",
     "packageManager": "yarn",
     "dist": {
       "target": "bit-dist"
