@@ -19,3 +19,5 @@ export const Label = forwardRef<HTMLLabelElement, HTMLProps<HTMLLabelElement>>(
     )
   }
 )
+
+export default Label

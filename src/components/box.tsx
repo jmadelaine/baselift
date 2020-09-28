@@ -12,3 +12,5 @@ export const Box = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((p
     {...props}
   />
 ))
+
+export default Box

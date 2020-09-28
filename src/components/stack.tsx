@@ -81,3 +81,5 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     )
   }
 )
+
+export default Stack

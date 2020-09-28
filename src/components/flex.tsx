@@ -13,3 +13,5 @@ export const Flex = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((
     {...props}
   />
 ))
+
+export default Flex

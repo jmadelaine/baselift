@@ -22,3 +22,5 @@ export const Text = forwardRef<HTMLDivElement, TextProps>(({ element = 'div', ..
     />
   )
 })
+
+export default Text

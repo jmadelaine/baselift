@@ -37,3 +37,5 @@ export const TextArea = forwardRef<
     {...props}
   />
 ))
+
+export default TextArea
