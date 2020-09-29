@@ -1,5 +1,10 @@
 # Changelog
 
+[0.6.0] 2020-09-29
+
+- Redesign Stack component API
+- Change license from MIT to Unlicense
+
 [0.5.2] 2020-09-28
 
 - Add default exports to component files
