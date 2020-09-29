@@ -1,13 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { forwardRef, ReactNode, Children, HTMLAttributes } from 'react'
-import { Flex } from './Flex'
-
-const parseCssSizeString = (inp: string) => {
-  const n = parseFloat(inp)
-  const p = inp.match(/(%|rem|em)/)
-  return isNaN(n) || n === 0 ? '' : p && p.length > 0 ? `${n}${p[0]}` : `${n}px`
-}
+import { forwardRef, HTMLAttributes } from 'react'
 
 const alignOptions = {
   start: 'flex-start',
@@ -21,63 +14,35 @@ const spaceOptions = {
   evenly: 'space-evenly',
 }
 
-type LiteralUnion<T extends U, U = string> = T | (U & { _?: never })
-
 export interface StackProps extends HTMLAttributes<HTMLDivElement> {
-  direction?: 'row' | 'column'
-  space?: LiteralUnion<Extract<keyof typeof spaceOptions, string>> | number
-  alignMain?: Extract<keyof typeof alignOptions, string>
-  alignCross?: Extract<keyof typeof alignOptions, string>
+  direction?: 'block' | 'inline'
+  blockAlign?: keyof typeof alignOptions
+  space?: keyof typeof spaceOptions | (string & {})
   stretch?: boolean
+  inlineAlign?: keyof typeof alignOptions
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
-  ({ direction, space, alignMain, alignCross, stretch, children, ...other }, ref) => {
-    const s =
-      !!space &&
-      typeof space !== 'number' &&
-      spaceOptions[space as Extract<keyof typeof spaceOptions, string>]
-
-    const customS =
-      s || !space
-        ? undefined
-        : typeof space === 'number'
-        ? isNaN(space)
-          ? undefined
-          : `${space}px`
-        : parseCssSizeString(space)
+  ({ blockAlign, direction, inlineAlign, space, stretch, ...props }, ref) => {
+    const wellknownSpacing = space && spaceOptions[space as keyof typeof spaceOptions]
+    const isBlock = direction === 'block'
+    const align = isBlock ? inlineAlign : blockAlign
+    const justify = isBlock ? blockAlign : inlineAlign
 
     return (
-      <Flex
+      <div
         ref={ref}
         css={{
-          flexDirection: direction === 'column' ? direction : 'row',
-          justifyContent: s ? s : (alignMain && alignOptions[alignMain]) || 'flex-start',
-          alignItems:
-            (stretch && 'stretch') || (alignCross && alignOptions[alignCross]) || 'flex-start',
+          alignItems: (stretch && 'stretch') || (align && alignOptions[align]) || 'flex-start',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: isBlock ? 'column' : 'row',
+          ...(!wellknownSpacing && space && { gap: space }),
+          justifyContent: wellknownSpacing || (justify && alignOptions[justify]) || 'flex-start',
+          position: 'relative',
         }}
-        {...other}
-      >
-        {customS
-          ? Children.toArray(children).reduce((res: ReactNode[], c, i) => {
-              if (i < 1) {
-                return [c]
-              } else {
-                return [
-                  ...res,
-                  <div
-                    key={`space-${i}`}
-                    css={{
-                      flex: `0 0 ${customS}`,
-                      blockSize: customS,
-                    }}
-                  />,
-                  c,
-                ]
-              }
-            }, [])
-          : children}
-      </Flex>
+        {...props}
+      />
     )
   }
 )
