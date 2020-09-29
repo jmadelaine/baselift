@@ -1,5 +1,5 @@
-[![MIT License][license-image]][license]
-[![NPM version][npm-version-image]][npm-url]
+[![Unlicense license][license-badge]][license]
+[![NPM version][npm-badge]][npm]
 [![Codecov Coverage][test-coverage-image]][test-coverage-url]
 
 # Baselift
@@ -12,18 +12,18 @@ This package includes the following components:
 - Button
 - Flex
 - Icon
-- Text
 - Label
+- Stack
+- Text
 - TextArea
 - TextField
-- Stack
 
 ---
 
 [emotion]: https://emotion.sh/
-[license-image]: http://img.shields.io/badge/license-MIT-blue.svg
+[license-badge]: https://img.shields.io/badge/license-Unlicense-blue.svg
 [license]: license.md
-[npm-url]: https://npmjs.org/package/baselift
-[npm-version-image]: https://badge.fury.io/js/baselift.svg
+[npm]: https://npmjs.org/package/baselift
+[npm-badge]: https://badge.fury.io/js/baselift.svg
 [test-coverage-url]: https://codecov.io/gh/jmadelaine/baselift/
 [test-coverage-image]: https://img.shields.io/codecov/c/github/jmadelaine/baselift/coverage.svg
