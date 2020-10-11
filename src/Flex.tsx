@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import { forwardRef, HTMLAttributes } from 'react'
+import { ComponentProps, forwardRef } from 'react'
+import { Box } from './Box'
 
-export const Flex = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((props, ref) => (
-  <div
+export const Flex = forwardRef<HTMLDivElement, ComponentProps<typeof Box>>((props, ref) => (
+  <Box
     ref={ref}
     css={{
-      boxSizing: 'border-box',
       display: 'flex',
-      position: 'relative',
     }}
     {...props}
   />
