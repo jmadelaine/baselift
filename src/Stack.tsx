@@ -14,7 +14,7 @@ const spaceOptions = {
   evenly: 'space-evenly',
 }
 
-export interface StackProps extends HTMLAttributes<HTMLDivElement> {
+interface StackProps extends HTMLAttributes<HTMLDivElement> {
   direction?: 'block' | 'inline'
   blockAlign?: keyof typeof alignOptions
   // eslint-disable-next-line @typescript-eslint/ban-types

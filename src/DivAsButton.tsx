@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { ComponentProps, forwardRef, PropsWithChildren } from 'react'
 import { Box } from './Box'
 
-export interface DivAsButtonProps extends ComponentProps<typeof Box> {
+interface DivAsButtonProps extends ComponentProps<typeof Box> {
   onClick?: () => void
 }
 

@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import { forwardRef, SVGAttributes } from 'react'
 
-export interface IconProps extends SVGAttributes<SVGSVGElement> {
+interface IconProps extends SVGAttributes<SVGSVGElement> {
   pathDef?: string | string[]
   pathFill?: string | string[]
   pathStroke?: string | string[]

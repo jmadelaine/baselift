@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import { ComponentProps, forwardRef } from 'react'
 import Input from './Input'
 
-export interface TextInputProps extends Omit<ComponentProps<typeof Input>, 'type'> {
+interface TextInputProps extends Omit<ComponentProps<typeof Input>, 'type'> {
   type?: 'email' | 'hidden' | 'password' | 'tel' | 'text' | 'url'
 }
 
