@@ -10,13 +10,14 @@ This package includes the following components:
 
 - Box
 - Button
+- DivAsButton
 - Flex
 - Icon
 - Label
 - Stack
 - Text
 - TextArea
-- TextField
+- TextInput
 
 ---
 
