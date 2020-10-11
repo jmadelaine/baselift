@@ -17,6 +17,7 @@ const spaceOptions = {
 export interface StackProps extends HTMLAttributes<HTMLDivElement> {
   direction?: 'block' | 'inline'
   blockAlign?: keyof typeof alignOptions
+  // eslint-disable-next-line @typescript-eslint/ban-types
   space?: keyof typeof spaceOptions | (string & {})
   stretch?: boolean
   inlineAlign?: keyof typeof alignOptions
@@ -24,6 +25,7 @@ export interface StackProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
   ({ blockAlign, direction, inlineAlign, space, stretch, ...props }, ref) => {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const wellknownSpacing = space && spaceOptions[space as keyof typeof spaceOptions]
     const isBlock = direction === 'block'
     const align = isBlock ? inlineAlign : blockAlign
@@ -33,6 +35,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
       <div
         ref={ref}
         css={{
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           alignItems: (stretch && 'stretch') || (align && alignOptions[align]) || 'flex-start',
           boxSizing: 'border-box',
           display: 'flex',
@@ -40,6 +43,9 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
           ...(!wellknownSpacing && space && { gap: space }),
           justifyContent: wellknownSpacing || (justify && alignOptions[justify]) || 'flex-start',
           position: 'relative',
+          '& > *': {
+            flexShrink: 0,
+          },
         }}
         {...props}
       />
