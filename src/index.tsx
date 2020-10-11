@@ -1,5 +1,6 @@
 export * from './Box'
 export * from './Button'
+export * from './DivAsButton'
 export * from './Flex'
 export * from './Icon'
 export * from './Label'
