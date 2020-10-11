@@ -9,7 +9,7 @@ expect.extend(matchers)
 
 const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
-describe('Text Field', () => {
+describe('TextInput', () => {
   it('renders', () => {
     const { type } = render(<TextInput />)
 

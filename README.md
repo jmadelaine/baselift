@@ -6,16 +6,27 @@
 
 React base components that implement [emotion][].
 
-This package includes the following components:
+This package contains the following components:
+
+## Display components
+
+Non-interactive components:
 
 - Box
-- Button
-- DivAsButton
 - Flex
 - Icon
-- Label
 - Stack
 - Text
+
+## Input components
+
+User-interactable components:
+
+- Button
+- DivAsButton
+- Input
+- Label
+- NumberInput
 - TextArea
 - TextInput
 

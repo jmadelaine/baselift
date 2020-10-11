@@ -3,27 +3,37 @@ import { jsx } from '@emotion/core'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'
-import { TextArea } from '../TextArea'
+import { Input } from '../Input'
 
 expect.extend(matchers)
 
 const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
-describe('TextArea', () => {
+describe('Input', () => {
   it('renders', () => {
-    const { type } = render(<TextArea />)
+    const { type } = render(<Input />)
 
-    expect(type).toBe('textarea')
+    expect(type).toBe('input')
   })
   it('accepts basic html props', () => {
-    const { props } = render(<TextArea id="someId" />)
+    const { props } = render(<Input id="someId" />)
 
     expect(props).toMatchObject({
       id: 'someId',
     })
   })
+  it('allows default props to be overwritten', () => {
+    const { props } = render(<Input type="number" />)
+
+    expect(props).not.toMatchObject({
+      type: 'text',
+    })
+    expect(props).toMatchObject({
+      type: 'number',
+    })
+  })
   it('has default style', () => {
-    const res = render(<TextArea />)
+    const res = render(<Input />)
 
     expect(res).toHaveStyleRule('appearance', 'none')
     expect(res).toHaveStyleRule('background', '0')
@@ -46,7 +56,7 @@ describe('TextArea', () => {
   })
   it('accepts css prop', () => {
     const res = render(
-      <TextArea
+      <Input
         css={{
           color: 'hotpink',
         }}
@@ -57,7 +67,7 @@ describe('TextArea', () => {
   })
   it('allows default style to be overwritten', () => {
     const res = render(
-      <TextArea
+      <Input
         css={{
           position: 'absolute',
         }}
@@ -68,7 +78,7 @@ describe('TextArea', () => {
     expect(res).toHaveStyleRule('position', 'absolute')
   })
   it('renders value', () => {
-    const { props } = render(<TextArea value="some text" />)
+    const { props } = render(<Input value="some text" />)
 
     expect(props).toMatchObject({
       value: 'some text',

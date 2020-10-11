@@ -3,27 +3,34 @@ import { jsx } from '@emotion/core'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'
-import { TextArea } from '../TextArea'
+import { NumberInput } from '../NumberInput'
 
 expect.extend(matchers)
 
 const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
-describe('TextArea', () => {
+describe('NumberInput', () => {
   it('renders', () => {
-    const { type } = render(<TextArea />)
+    const { type } = render(<NumberInput />)
 
-    expect(type).toBe('textarea')
+    expect(type).toBe('input')
+  })
+  it('has default props', () => {
+    const { props } = render(<NumberInput />)
+
+    expect(props).toMatchObject({
+      type: 'number',
+    })
   })
   it('accepts basic html props', () => {
-    const { props } = render(<TextArea id="someId" />)
+    const { props } = render(<NumberInput id="someId" />)
 
     expect(props).toMatchObject({
       id: 'someId',
     })
   })
   it('has default style', () => {
-    const res = render(<TextArea />)
+    const res = render(<NumberInput />)
 
     expect(res).toHaveStyleRule('appearance', 'none')
     expect(res).toHaveStyleRule('background', '0')
@@ -46,7 +53,7 @@ describe('TextArea', () => {
   })
   it('accepts css prop', () => {
     const res = render(
-      <TextArea
+      <NumberInput
         css={{
           color: 'hotpink',
         }}
@@ -57,7 +64,7 @@ describe('TextArea', () => {
   })
   it('allows default style to be overwritten', () => {
     const res = render(
-      <TextArea
+      <NumberInput
         css={{
           position: 'absolute',
         }}
@@ -68,10 +75,10 @@ describe('TextArea', () => {
     expect(res).toHaveStyleRule('position', 'absolute')
   })
   it('renders value', () => {
-    const { props } = render(<TextArea value="some text" />)
+    const { props } = render(<NumberInput value={1} />)
 
     expect(props).toMatchObject({
-      value: 'some text',
+      value: 1,
     })
   })
 })
