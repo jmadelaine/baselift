@@ -1,5 +1,11 @@
 # Changelog
 
+[0.7.0] 2020-10-12
+
+- Remove type exports
+- Add DivAsButton, Input and NumberInput
+- Rename TextField to TextInput
+
 [0.6.0] 2020-09-29
 
 - Redesign Stack component API
