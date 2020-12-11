@@ -1,4 +1,4 @@
-export * from './Box'
+export * from './Block'
 export * from './Button'
 export * from './DivAsButton'
 export * from './Flex'

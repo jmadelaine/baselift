@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 import { ComponentProps, forwardRef, PropsWithChildren } from 'react'
-import { Box } from './Box'
+import { Block } from './Block'
 
-interface DivAsButtonProps extends ComponentProps<typeof Box> {
+interface DivAsButtonProps extends ComponentProps<typeof Block> {
   onClick?: () => void
 }
 
@@ -12,7 +12,7 @@ export const DivAsButton = forwardRef<HTMLDivElement, PropsWithChildren<DivAsBut
     let innerRef: HTMLDivElement | null = null
 
     return (
-      <Box
+      <Block
         ref={r => {
           if (typeof ref === 'function') {
             ref(r)

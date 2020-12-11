@@ -3,23 +3,23 @@ import { jsx } from '@emotion/react'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'
-import { Box } from '../Box'
+import { Block } from '../Block'
 
 expect.extend(matchers)
 
 const render = (el: ReactElement) => (create(el).toJSON() || {}) as ReactTestRendererJSON
 
-describe('Box', () => {
+describe('Block', () => {
   it('renders', () => {
-    const { type } = render(<Box />)
+    const { type } = render(<Block />)
 
     expect(type).toBe('div')
   })
   it('renders children', () => {
     const { children } = render(
-      <Box>
+      <Block>
         <div />
-      </Box>
+      </Block>
     )
 
     const c = children as ReactTestRendererJSON[]
@@ -28,21 +28,21 @@ describe('Box', () => {
     expect(c[0].type).toBe('div')
   })
   it('accepts basic html props', () => {
-    const { props } = render(<Box id="someId" />)
+    const { props } = render(<Block id="someId" />)
 
     expect(props).toMatchObject({
       id: 'someId',
     })
   })
   it('has default style', () => {
-    const res = render(<Box />)
+    const res = render(<Block />)
 
     expect(res).toHaveStyleRule('box-sizing', 'border-box')
     expect(res).toHaveStyleRule('position', 'relative')
   })
   it('accepts css prop', () => {
     const res = render(
-      <Box
+      <Block
         css={{
           color: 'hotpink',
         }}
@@ -53,7 +53,7 @@ describe('Box', () => {
   })
   it('allows default style to be overwritten', () => {
     const res = render(
-      <Box
+      <Block
         css={{
           position: 'absolute',
         }}

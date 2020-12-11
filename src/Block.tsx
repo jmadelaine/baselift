@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/react'
 import { forwardRef, HTMLAttributes } from 'react'
 
-export const Box = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((props, ref) => (
+export const Block = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((props, ref) => (
   <div
     ref={ref}
     css={{
@@ -13,4 +13,4 @@ export const Box = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((p
   />
 ))
 
-export default Box
+export default Block
