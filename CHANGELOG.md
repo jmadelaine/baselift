@@ -1,5 +1,11 @@
 # Changelog
 
+[0.8.0] 2020-12-11
+
+- Update @emotion/core to @emotion/react
+- Rename Box to Block
+- Improve Stack API
+
 [0.7.0] 2020-10-12
 
 - Remove type exports
