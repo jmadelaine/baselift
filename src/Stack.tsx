@@ -8,7 +8,7 @@ const alignOptions = {
   end: 'flex-end',
 }
 
-const spaceOptions = {
+const distributeOptions = {
   between: 'space-between',
   around: 'space-around',
   evenly: 'space-evenly',
@@ -17,16 +17,17 @@ const spaceOptions = {
 interface StackProps extends HTMLAttributes<HTMLDivElement> {
   direction?: 'block' | 'inline'
   blockAlign?: keyof typeof alignOptions
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  space?: keyof typeof spaceOptions | (string & {})
-  stretch?: boolean
   inlineAlign?: keyof typeof alignOptions
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  distribute?: keyof typeof distributeOptions
+  gap?: string
+  stretch?: boolean
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(
-  ({ blockAlign, direction, inlineAlign, space, stretch, ...props }, ref) => {
+  ({ blockAlign, direction, inlineAlign, distribute, gap, stretch, ...props }, ref) => {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    const wellknownSpacing = space && spaceOptions[space as keyof typeof spaceOptions]
+    const distribution = distribute && distributeOptions[distribute]
     const isBlock = direction === 'block'
     const align = isBlock ? inlineAlign : blockAlign
     const justify = isBlock ? blockAlign : inlineAlign
@@ -35,17 +36,17 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
       <div
         ref={ref}
         css={{
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          alignItems: (stretch && 'stretch') || (align && alignOptions[align]) || 'flex-start',
+          alignSelf: 'stretch',
+          alignItems: stretch ? 'stretch' : (align && alignOptions[align]) || 'flex-start',
           boxSizing: 'border-box',
           display: 'flex',
           flexDirection: isBlock ? 'column' : 'row',
-          ...(!wellknownSpacing && space && { gap: space }),
-          justifyContent: wellknownSpacing || (justify && alignOptions[justify]) || 'flex-start',
+          justifyContent: distribution || (justify && alignOptions[justify]) || 'flex-start',
           position: 'relative',
           '& > *': {
             flexShrink: 0,
           },
+          ...(!!gap && { gap }),
         }}
         {...props}
       />

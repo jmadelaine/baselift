@@ -91,19 +91,19 @@ describe('Stack', () => {
     expect(center).toHaveStyleRule('justify-content', 'center')
     expect(end).toHaveStyleRule('justify-content', 'flex-end')
   })
-  it('accepts space prop', () => {
-    const between = render(<Stack space="between" />)
-    const around = render(<Stack space="around" />)
-    const evenly = render(<Stack space="evenly" />)
+  it('accepts distribute prop', () => {
+    const between = render(<Stack distribute="between" />)
+    const around = render(<Stack distribute="around" />)
+    const evenly = render(<Stack distribute="evenly" />)
 
     expect(between).toHaveStyleRule('justify-content', 'space-between')
     expect(around).toHaveStyleRule('justify-content', 'space-around')
     expect(evenly).toHaveStyleRule('justify-content', 'space-evenly')
   })
-  it('overrides blockAlign prop with space prop when in block direction', () => {
+  it('overrides blockAlign prop with distribute prop when in block direction', () => {
     const center = render(<Stack direction="block" blockAlign="center" inlineAlign="end" />)
     const between = render(
-      <Stack direction="block" blockAlign="center" inlineAlign="end" space="between" />
+      <Stack direction="block" blockAlign="center" inlineAlign="end" distribute="between" />
     )
 
     expect(center).toHaveStyleRule('justify-content', 'center')
@@ -111,10 +111,10 @@ describe('Stack', () => {
     expect(between).toHaveStyleRule('justify-content', 'space-between')
     expect(between).toHaveStyleRule('align-items', 'flex-end')
   })
-  it('overrides inlineAlign prop with space prop when in inline direction', () => {
+  it('overrides inlineAlign prop with distribute prop when in inline direction', () => {
     const center = render(<Stack direction="inline" inlineAlign="center" blockAlign="end" />)
     const between = render(
-      <Stack direction="inline" inlineAlign="center" blockAlign="end" space="between" />
+      <Stack direction="inline" inlineAlign="center" blockAlign="end" distribute="between" />
     )
 
     expect(center).toHaveStyleRule('justify-content', 'center')
@@ -149,13 +149,13 @@ describe('Stack', () => {
     expect(stretch).toHaveStyleRule('justify-content', 'center')
     expect(stretch).toHaveStyleRule('align-items', 'stretch')
   })
-  it('accepts custom space prop', () => {
-    const customSpace = render(<Stack space="5px" />)
+  it('accepts gap prop', () => {
+    const customSpace = render(<Stack gap="5px" />)
 
     expect(customSpace).toHaveStyleRule('gap', '5px')
   })
   it('does not overwrite blockAlign or inlineAlign with custom space prop', () => {
-    const customSpace = render(<Stack space="5px" blockAlign="center" inlineAlign="end" />)
+    const customSpace = render(<Stack gap="5px" blockAlign="center" inlineAlign="end" />)
 
     expect(customSpace).toHaveStyleRule('gap', '5px')
     expect(customSpace).toHaveStyleRule('justify-content', 'flex-end')
