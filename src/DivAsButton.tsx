@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx } from '@emotion/react'
 import { ComponentProps, forwardRef, PropsWithChildren } from 'react'
 import { Box } from './Box'
 

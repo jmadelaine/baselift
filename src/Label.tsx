@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx } from '@emotion/react'
 import { forwardRef, HTMLProps } from 'react'
 
 export const Label = forwardRef<HTMLLabelElement, HTMLProps<HTMLLabelElement>>(

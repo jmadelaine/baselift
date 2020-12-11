@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@emotion/core": "^10.0.35",
+    "@emotion/react": "^11.1.2",
     "@testing-library/react": "^11.0.4",
     "@types/jest": "^26.0.14",
     "@types/react": "^16.9.52",
@@ -36,8 +36,8 @@
     "@types/react-test-renderer": "^16.9.3",
     "codecov": "^3.8.0",
     "jest": "^26.5.3",
-    "jest-emotion": "^10.0.32",
-    "prettier": "^2.1.2",
+    "jest-emotion": "^11.0.0",
+    "prettier": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
@@ -45,7 +45,7 @@
     "typescript": "^4.0.3"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.35"
+    "@emotion/react": "^11.1.2"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx } from '@emotion/react'
 import { ReactElement } from 'react'
 import { create, ReactTestRendererJSON } from 'react-test-renderer'
 import { matchers } from 'jest-emotion'

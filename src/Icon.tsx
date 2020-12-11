@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx } from '@emotion/react'
 import { forwardRef, SVGAttributes } from 'react'
 
 interface IconProps extends SVGAttributes<SVGSVGElement> {
